@@ -16,10 +16,11 @@ namespace Barcode_Generator
     {
         Image image2;
         Image image1;
-        int count = 0;
+        int initbar=0;
+        int initqr = 0;
         String Codedata ="";
-        int i = 0;
-        public Form1()
+        bool flag = true;
+        public Form1()  
         {
             InitializeComponent();
             radioButton1.Select();
@@ -27,85 +28,26 @@ namespace Barcode_Generator
 
         private void button1_Click(object sender, EventArgs e)
         {
-            GC.Collect();
-            GC.WaitForPendingFinalizers();
-            generate();
-            count = 0;
-
-          
-
+            image1 = null;
+            image2 = null;
+            pictureBox1.Image = image1;
+            pictureBox2.Image = image2;
+            
+            generatebar();
+            generateqr();
+           
         }
-        private void generate()
+        private void generatebar()
         {
             try
             {
-                backgroundWorker1.WorkerSupportsCancellation = true;
-                backgroundWorker1.RunWorkerAsync();
-
-            }
-            catch
-            {}
-            
-        }
-
-        private void checkwatermark1()
-        {
-
-
-
-            GC.Collect();
-            GC.WaitForPendingFinalizers();
-            image1 = Image.FromFile("C://barcodefolder//Qr" + Codedata + ".jpg");
-            Bitmap bmp = new Bitmap(image1);
-
-            Boolean flag = true;
-
-            for (int i = 0; i < bmp.Height; i++)
-            {
-                for (int j = 0; j < bmp.Width; j++)
-                {
-
-                    Color now_color = bmp.GetPixel(j, i);
-
-                    Color Match = Color.FromArgb(-65536);
-
-
-                    //here  you  will find more practical 
-                    if (now_color == Match)
-                    {
-                       
-                        label5.Text = "match";
-                        GC.Collect();
-                        GC.WaitForPendingFinalizers();
-                        flag = false;
-                        image1 = null;
-                        pictureBox1.Image = image1;
-                        try
-                        {
-                            System.IO.File.Delete("C://barcodefolder//Qr" + Codedata + ".jpg");
-                        }
-                        catch
-                        { button1.PerformClick(); }
-                        break;
-                       
-                    }
-                    else { label5.Text = "No Match"; }
+                
+                    
+                    image2 = null;
                    
-
-                }
-
-            }
-            if (flag == false)
-            {
-
-                try
-                {
-                   
-
+                    pictureBox2.Image = image2;
                     GC.Collect();
                     GC.WaitForPendingFinalizers();
-
-
                     OnBarcode.Barcode.Linear barcode = new OnBarcode.Barcode.Linear();
                     barcode.Type = OnBarcode.Barcode.BarcodeType.CODE39;
                     barcode.X = 1;
@@ -113,186 +55,206 @@ namespace Barcode_Generator
 
 
 
-                    OnBarcode.Barcode.QRCode qrCode = new OnBarcode.Barcode.QRCode();
-
-                    qrCode.X = 4;
-
 
                     if (textBox1.Enabled)
                     {
                         Codedata = textBox1.Text.ToString();
-                        qrCode.Data = Codedata;
-                        // barcode.Data = Codedata;
-                        //  System.IO.File.Delete("C://barcodefolder//Bar" + Codedata + ".png");
-                        System.IO.File.Delete("C://barcodefolder//QR" + Codedata + ".jpg");
-                        // barcode.drawBarcode("C://barcodefolder//Bar" + Codedata + ".png");
-                        qrCode.drawBarcode("C://barcodefolder//QR" + Codedata + ".jpg");
+                        barcode.Data = Codedata;
+                        barcode.drawBarcode("C://barcodefolder//Bar" + Codedata + ".png");
+                       
                     }
                     else
                     {
-                        Codedata = "000000000000" + i;
-                        qrCode.Data = Codedata;
-                        // barcode.Data = Codedata;
-                        // System.IO.File.Delete("C://barcodefolder//Bar" + Codedata + ".png");
-                        System.IO.File.Delete("C://barcodefolder//QR" + Codedata + ".jpg");
-                        // barcode.drawBarcode("C://barcodefolder//Bar" + Codedata + ".png");
-                        qrCode.drawBarcode("C://barcodefolder//QR" + Codedata + ".jpg");
-
+                        Codedata = "000000000000" + initbar;
+                        barcode.Data = Codedata;
+                        barcode.drawBarcode("C://barcodefolder//Bar" + Codedata + ".png");
+                       
                     }
 
-                    image1 = Image.FromFile("C://barcodefolder//Qr" + Codedata + ".jpg");
+                   
                     image2 = Image.FromFile("C://barcodefolder//Bar" + Codedata + ".png");
-                    pictureBox1.Image = image1;
                     pictureBox2.Image = image2;
-                    checkwatermark1();
+                    initbar++;
+                    checkwatermark2();
                     GC.Collect();
                     GC.WaitForPendingFinalizers();
-
-
-
                     label4.ForeColor = Color.Green;
                     label4.Text = "status OK";
 
-                }
-                catch (Exception ex)
-                {
-                    label4.ForeColor = Color.Red;
-                    label4.Text = "The lastest process still working \nPlease wait a moment and try to generate again\n" + ex.ToString();
-
-
-                    button1.PerformClick();
-
-
-                }
+                  
+          
 
             }
+            catch(Exception ex)
+            {
+                label4.ForeColor = Color.Red;
+                label4.Text = ex.ToString();
+            }
+            
+        }
 
-            image1 = Image.FromFile("C://barcodefolder//Qr" + Codedata + ".jpg");
-            image2 = Image.FromFile("C://barcodefolder//Bar" + Codedata + ".png");
-            pictureBox1.Image = image1;
-            pictureBox2.Image = image2;
-           
+        private void generateqr()
+        {
+            try
+            {
+
+                image1 = null;
+               
+                pictureBox1.Image = image1;
+             
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
+                OnBarcode.Barcode.QRCode qrCode = new OnBarcode.Barcode.QRCode();
+                qrCode.X = 4;
+                if (textBox1.Enabled)
+                {
+                    Codedata = textBox1.Text.ToString();
+                    qrCode.Data = Codedata;
+                    qrCode.drawBarcode("C://barcodefolder//QR" + Codedata + ".jpg");
+                }
+                else
+                {
+                    Codedata = "000000000000" + initqr;
+                    qrCode.Data = Codedata;
+                      qrCode.drawBarcode("C://barcodefolder//QR" + Codedata + ".jpg");
+
+                }
+
+                image1 = Image.FromFile("C://barcodefolder//QR" + Codedata + ".jpg");
+                initqr++;
+                checkwatermark1();
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
+                label4.ForeColor = Color.Green;
+                label4.Text = "status OK";
+                
+
+
+            }
+            catch (Exception ex)
+            {
+                label4.ForeColor = Color.Red;
+                label4.Text = ex.ToString();
+            }
+
+        }
+
+        private void checkwatermark1()
+        {  
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
+            image1 = Image.FromFile("C://barcodefolder//QR" + Codedata + ".jpg");
+            Bitmap bmp = new Bitmap(image1);
+          
+            try
+            {
+                for (int i = 0; i < bmp.Height; i++)
+                {
+                    for (int j = 0; j < bmp.Width; j++)
+                    {
+                        Color now_color = bmp.GetPixel(j, i);
+                        Color Match = Color.FromArgb(-65536);
+                        //Find Watermark
+                        if (now_color == Match)
+                        {
+                            label5.Text = "match";
+                            GC.Collect();
+                            GC.WaitForPendingFinalizers();
+                            flag = false;
+                            image1 = null;
+                            pictureBox1.Image = null;
+                            System.IO.File.Delete("C://barcodefolder//QR" + Codedata + ".jpg");
+                            i = bmp.Height;
+                            j = bmp.Width;
+
+                        }
+                        else {
+                            flag = true;
+                            label5.Text = "No Match"; 
+                        }
+                    }
+
+
+                }
+                if (flag == false)
+                {
+                    initqr--;
+
+                    generateqr();
+                }
+                else
+                {
+                    image1 = Image.FromFile("C://barcodefolder//QR" + Codedata + ".jpg");
+                    pictureBox1.Image = image1;
+                
+                }
+            }
+
+
+            catch (Exception ex)
+            {
+                label4.ForeColor = Color.Red;
+                label4.Text = "The lastest process still working \nPlease wait a moment and try to generate again\n" + ex.ToString();
+                // flag = false;
+                // break;
+            }
 
         }
         private void checkwatermark2()
         {
             GC.Collect();
             GC.WaitForPendingFinalizers(); 
-            
             image2 = Image.FromFile("C://barcodefolder//Bar" + Codedata + ".png");
             Bitmap bmp = new Bitmap( image2 );
-            bool flag = true;
-
-            for (int i = 0; i < bmp.Height; i++)
+           
+            try
             {
-                for (int j = 0; j < bmp.Width; j++)
+                for (int i = 0; i < bmp.Height; i++)
                 {
-
-                    Color now_color = bmp.GetPixel(j, i);
-
-                    Color Match = Color.FromArgb(-65536);
-
-
-                    //here  you  will find more practical 
-                    if (now_color == Match)
+                    for (int j = 0; j < bmp.Width; j++)
                     {
-                        label5.Text = "match";
-                        GC.Collect();
-                        GC.WaitForPendingFinalizers();
-                        image2 = null;
-                        pictureBox2.Image = image2;
-                        try
+                        Color now_color = bmp.GetPixel(j, i);
+                        Color Match = Color.FromArgb(-65536);
+                        //find watermark
+                        if (now_color == Match)
                         {
-                            System.IO.File.Delete("C://barcodefolder//Bar" + Codedata + ".png");
+                            label5.Text = "match";
+                            GC.Collect();
+                            GC.WaitForPendingFinalizers();
+                            image2 = null;
+                            flag = false;
+                            System.IO.File.Delete("C://barcodefolder//BAR" + Codedata + ".jpg");
+                            pictureBox2.Image = image2;
+                            i = bmp.Height;
+                            j = bmp.Width;
                         }
-                        catch { button1.PerformClick(); }
-                        flag = false;
-                        break;
-                    }
-                    else {
-                       
-                        label5.Text = "No Match";
-                       
+                        else
+                        {
+                            flag = true;
+                            label5.Text = "No Match";
+                        }
+
                     }
 
                 }
-
-            }
-            if (flag == false)
-            {
-                try
+                if (flag == false)
                 {
-                    image1 = null;
-                    image2 = null;
-                    pictureBox1.Image = image1;
-                    pictureBox2.Image = image2;
-
-                    GC.Collect();
-                    GC.WaitForPendingFinalizers();
-
-
-                    OnBarcode.Barcode.Linear barcode = new OnBarcode.Barcode.Linear();
-                    barcode.Type = OnBarcode.Barcode.BarcodeType.CODE39;
-                    barcode.X = 1;
-                    barcode.Y = 80;
-
-
-
-                    OnBarcode.Barcode.QRCode qrCode = new OnBarcode.Barcode.QRCode();
-
-                    qrCode.X = 4;
-
-
-                    if (textBox1.Enabled)
-                    {
-                        Codedata = textBox1.Text.ToString();
-                        qrCode.Data = Codedata;
-                        barcode.Data = Codedata;
-                        System.IO.File.Delete("C://barcodefolder//Bar" + Codedata + ".png");
-                        //   System.IO.File.Delete("C://barcodefolder//QR" + Codedata + ".jpg");
-                        barcode.drawBarcode("C://barcodefolder//Bar" + Codedata + ".png");
-                        // qrCode.drawBarcode("C://barcodefolder//QR" + Codedata + ".jpg");
-                    }
-                    else
-                    {
-                        Codedata = "000000000000" + i;
-                        qrCode.Data = Codedata;
-                        barcode.Data = Codedata;
-                        System.IO.File.Delete("C://barcodefolder//Bar" + Codedata + ".png");
-                        // System.IO.File.Delete("C://barcodefolder//QR" + Codedata + ".jpg");
-                        barcode.drawBarcode("C://barcodefolder//Bar" + Codedata + ".png");
-                        //  qrCode.drawBarcode("C://barcodefolder//QR" + Codedata + ".jpg");
-
-                    }
-
-                    image1 = Image.FromFile("C://barcodefolder//Qr" + Codedata + ".jpg");
+                    initbar--;
+                    generatebar();
+                }
+                else
+                {
                     image2 = Image.FromFile("C://barcodefolder//Bar" + Codedata + ".png");
-                    pictureBox1.Image = image1;
                     pictureBox2.Image = image2;
-                    checkwatermark2();
-                    GC.Collect();
-                    GC.WaitForPendingFinalizers();
-
-
-
-                    label4.ForeColor = Color.Green;
-                    label4.Text = "status OK";
-
-                }
-                catch (Exception ex)
-                {
-                    label4.ForeColor = Color.Red;
-                    label4.Text = "The lastest process still working \nPlease wait a moment and try to generate again\n" + ex.ToString();
-
-                    button1.PerformClick();
-
                 }
             }
-            image1 = Image.FromFile("C://barcodefolder//Qr" + Codedata + ".jpg");
-            image2 = Image.FromFile("C://barcodefolder//Bar" + Codedata + ".png");
-            pictureBox1.Image = image1;
-            pictureBox2.Image = image2;
-          
+            catch (Exception ex)
+            {
+                label4.ForeColor = Color.Red;
+                label4.Text = "The lastest process still working \nPlease wait a moment and try to generate again\n" + ex.ToString();
+                // flag = false;
+                // break;
+            }
            
         }
 
@@ -354,78 +316,8 @@ namespace Barcode_Generator
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
-            try
-            {
-                image1 = null;
-                image2 = null;
-                pictureBox1.Image = image1;
-                pictureBox2.Image = image2;
-
-                GC.Collect();
-                GC.WaitForPendingFinalizers();
-              
-
-                OnBarcode.Barcode.Linear barcode = new OnBarcode.Barcode.Linear();
-                barcode.Type = OnBarcode.Barcode.BarcodeType.CODE39;
-                barcode.X = 1;
-                barcode.Y = 80;
-            
-
-
-                OnBarcode.Barcode.QRCode qrCode = new OnBarcode.Barcode.QRCode();
-
-                qrCode.X = 4;
-
-
-                if (textBox1.Enabled)
-                {
-                    Codedata = textBox1.Text.ToString();
-                    qrCode.Data = Codedata;
-                    barcode.Data = Codedata;
-                    System.IO.File.Delete("C://barcodefolder//Bar" + Codedata + ".png");
-                    System.IO.File.Delete("C://barcodefolder//QR" + Codedata + ".jpg");
-                    barcode.drawBarcode("C://barcodefolder//Bar" + Codedata + ".png");
-                    qrCode.drawBarcode("C://barcodefolder//QR" + Codedata + ".jpg");
-                }
-                else
-                {
-                    Codedata = "000000000000" + i;
-                    qrCode.Data = Codedata;
-                    barcode.Data = Codedata;
-                    System.IO.File.Delete("C://barcodefolder//Bar" + Codedata + ".png");
-                    System.IO.File.Delete("C://barcodefolder//QR" + Codedata + ".jpg");
-                    barcode.drawBarcode("C://barcodefolder//Bar" + Codedata + ".png");
-                    qrCode.drawBarcode("C://barcodefolder//QR" + Codedata + ".jpg");
-
-                }
-
-                image1 = Image.FromFile("C://barcodefolder//Qr" + Codedata + ".jpg");
-                image2 = Image.FromFile("C://barcodefolder//Bar" + Codedata + ".png");
-                pictureBox1.Image = image1;
-                pictureBox2.Image = image2;
-                checkwatermark1(); 
-                checkwatermark2();
-                GC.Collect();
-                GC.WaitForPendingFinalizers();
-              
-
-
-                label4.ForeColor = Color.Green;
-                label4.Text = "status OK";
-                i++;
-            }
-            catch (Exception ex)
-            {
-                label4.ForeColor = Color.Red;
-                label4.Text = "The lastest process still working \nPlease wait a moment and try to generate again\n" + ex.ToString();
-              
-                    
-                    button1.PerformClick();
-                    backgroundWorker1.CancelAsync();
-              
-
-            }
-            backgroundWorker1.Dispose();
+          
+            //backgroundWorker1.Dispose();
         }
     }
 }
