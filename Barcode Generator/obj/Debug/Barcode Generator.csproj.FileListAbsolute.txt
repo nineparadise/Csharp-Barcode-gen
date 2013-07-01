@@ -7,3 +7,8 @@ C:\Users\Master\Documents\Visual Studio 2012\Projects\Barcode Generator\Barcode 
 C:\Users\Master\Documents\Visual Studio 2012\Projects\Barcode Generator\Barcode Generator\obj\Debug\Barcode Generator.csproj.GenerateResource.Cache
 C:\Users\Master\Documents\Visual Studio 2012\Projects\Barcode Generator\Barcode Generator\obj\Debug\Barcode Generator.exe
 C:\Users\Master\Documents\Visual Studio 2012\Projects\Barcode Generator\Barcode Generator\obj\Debug\Barcode Generator.pdb
+C:\Users\Master\Documents\Visual Studio 2012\Projects\Barcode Generator\Barcode Generator\bin\Debug\Barcode Generator.exe.manifest
+C:\Users\Master\Documents\Visual Studio 2012\Projects\Barcode Generator\Barcode Generator\bin\Debug\Barcode Generator.application
+C:\Users\Master\Documents\Visual Studio 2012\Projects\Barcode Generator\Barcode Generator\obj\Debug\Barcode Generator.exe.manifest
+C:\Users\Master\Documents\Visual Studio 2012\Projects\Barcode Generator\Barcode Generator\obj\Debug\Barcode Generator.application
+C:\Users\Master\Documents\Visual Studio 2012\Projects\Barcode Generator\Barcode Generator\obj\Debug\Barcode Generator.csprojResolveAssemblyReference.cache
