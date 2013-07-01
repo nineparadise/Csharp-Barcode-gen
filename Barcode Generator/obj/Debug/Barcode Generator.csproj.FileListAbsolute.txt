@@ -1,0 +1,10 @@
+c:\users\master\documents\visual studio 2012\Projects\Barcode Generator\Barcode Generator\bin\Debug\Barcode Generator.exe
+c:\users\master\documents\visual studio 2012\Projects\Barcode Generator\Barcode Generator\bin\Debug\OnBarcode.Barcode.WinForms.dll
+C:\Users\Master\Documents\Visual Studio 2012\Projects\Barcode Generator\Barcode Generator\obj\Debug\Barcode Generator.csprojResolveAssemblyReference.cache
+C:\Users\Master\Documents\Visual Studio 2012\Projects\Barcode Generator\Barcode Generator\obj\Debug\Barcode_Generator.Form1.resources
+C:\Users\Master\Documents\Visual Studio 2012\Projects\Barcode Generator\Barcode Generator\obj\Debug\Barcode_Generator.Properties.Resources.resources
+C:\Users\Master\Documents\Visual Studio 2012\Projects\Barcode Generator\Barcode Generator\obj\Debug\Barcode Generator.csproj.GenerateResource.Cache
+C:\Users\Master\Documents\Visual Studio 2012\Projects\Barcode Generator\Barcode Generator\bin\Debug\Barcode Generator.exe.config
+C:\Users\Master\Documents\Visual Studio 2012\Projects\Barcode Generator\Barcode Generator\bin\Debug\Barcode Generator.pdb
+C:\Users\Master\Documents\Visual Studio 2012\Projects\Barcode Generator\Barcode Generator\obj\Debug\Barcode Generator.exe
+C:\Users\Master\Documents\Visual Studio 2012\Projects\Barcode Generator\Barcode Generator\obj\Debug\Barcode Generator.pdb
