@@ -56,11 +56,13 @@ namespace Barcode_Generator
             {
                 if (state == 0)
                 {
-                    System.Windows.Forms.MessageBox.Show("Please select folder to export file.");
+                    System.Windows.Forms.MessageBox.Show("Please select folder to export file.", "warning",
+    MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                 else 
                 {
-                    System.Windows.Forms.MessageBox.Show("กรุณาเลือกตำแหน่งสำหรับบันทึกข้อมูล.");
+                    System.Windows.Forms.MessageBox.Show("กรุณาเลือกตำแหน่งสำหรับบันทึกข้อมูล.", "warning",
+    MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
             else
@@ -78,11 +80,13 @@ namespace Barcode_Generator
                     {
                         if (state == 0)
                         {
-                            System.Windows.Forms.MessageBox.Show("please type Combobox and Amount in Number only.");
+                            System.Windows.Forms.MessageBox.Show("please type Combobox and Amount in Number only.", "warning",
+    MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                         else
                         {
-                            System.Windows.Forms.MessageBox.Show("กรุณาระบุในกล่องเลือก และค่าจำนวนเป็นตัวเลขเท่านั้น.");
+                            System.Windows.Forms.MessageBox.Show("กรุณาระบุในกล่องเลือก และค่าจำนวนเป็นตัวเลขเท่านั้น.", "warning",
+    MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                       
                     }
@@ -516,11 +520,11 @@ namespace Barcode_Generator
             {
                 if (int.Parse(Form1.ActiveForm.Size.Width.ToString()) < 560)
                 {
-                    panel1.Location = new System.Drawing.Point(100, 0);
+                    panel1.Location = new System.Drawing.Point(100,30);
                 }
                 else
                 {
-                    panel1.Location = new System.Drawing.Point((int.Parse(Form1.ActiveForm.Size.Width.ToString()) / 2) - (700 / 2), 0);
+                    panel1.Location = new System.Drawing.Point((int.Parse(Form1.ActiveForm.Size.Width.ToString()) / 2) - (700 / 2), 30);
                 }
             }
             catch (Exception ex)
@@ -531,9 +535,22 @@ namespace Barcode_Generator
         private void button3_Click(object sender, EventArgs e)
         {
 
-            printDocument1.PrintPage += new PrintPageEventHandler(pqr);
-            printDocument1.DefaultPageSettings.Landscape = true;
-            printDocument1.Print();
+            if (bitmap == null)
+            {
+                if (state == 0)
+                    System.Windows.Forms.MessageBox.Show( "The code is not generate!","warning",
+    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                else
+                    System.Windows.Forms.MessageBox.Show("กรุณาสร้างโค้ดก่อนทำการพิมพ์", "คำเตือน",
+    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                printDialog1.ShowDialog();
+                printDocument1.PrintPage += new PrintPageEventHandler(pqr);
+                printDocument1.DefaultPageSettings.Landscape = true;
+                printDocument1.Print();
+            }
         
         }
        
@@ -563,7 +580,7 @@ namespace Barcode_Generator
 
                 "Initial value > this value determine the constant text what would you like to include in your code. " +
                 "\n\nAmount > Amount of auto increment number." +
-                "\n\nCombobox > Using with Amount.\n e.g. Combobox->3 Amount->3 you will get barcode number 3 , 4 , 5"
+                "\n\nCombobox > Using with Amount.\n e.g. Combobox->3 Amount->3 you will get barcode number 3 , 4 and 5"
                 + "\n\n Code > Using whit Custom mode to set your barcode & qrcode value. "
                 + "\n\nBrowse > Select your destination folder."
                 + "\n\nCheckbox > Check for generate file in type."
@@ -575,11 +592,11 @@ namespace Barcode_Generator
 
                 "ค่าเริ่มต้น > เป็นค่าคงที่ที่จะรวมอยู่ใน Code ของคุณ. " +
                 "\n\nจำนวน > จำนวนของการสร้าง Code โดยค่าของ Code จะเพิ่มขึ้นทีละ 1 ." +
-                "\n\nกล่องหลายตัวเลือก > Using with Amount.\n e.g. Combobox->3 Amount->3 you will get barcode number 3 , 4 , 5"
-                + "\n\n Code > Using whit Custom mode to set your barcode & qrcode value. "
-                + "\n\nBrowse > Select your destination folder."
-                + "\n\nCheckbox > Check for generate file in type."
-                + "\n\nPrint this code > Print the current barcode & qrcode in Picture box.\n\nLanguage > to select language");
+                "\n\nกล่องหลายตัวเลือก > ใช้สิ่งนี้ร่วมกับจำนวน.\n เช่น กล่องหลายตัวเลือก->3 จำนวน->3 คุณจะได้โค้ด 3 อัน คือ 3 , 4 และ 5"
+                + "\n\n โค้ด > ใช้สำหรับโหมดธรรมดาเพื่อตั้งค่าให้กับ บาร์โค้ดและคิวอาโค้ด. "
+                + "\n\nเลือก > เลือกตำแหน่งเป้าหมายที่จะทำการบันทึกรูป."
+                + "\n\nกล่องตัวเลือกทางขวามือ > เลือกเพื่อทำการบันทึกไฟล์แต่ละชนิดลงในตำแหน่งเป้าหมาย."
+                + "\n\nพิมพ์ > จัดพิมพ์โค้ดที่ปรากฏอยู่ในหน้าต่างแสดงโค้ด.\n\nภาษา > เลือกภาษา");
             }
         }
 
@@ -595,6 +612,10 @@ namespace Barcode_Generator
             button1.Text = "สร้าง";
             button3.Text = "พิมพ์หน้านี้";
             label1.Text = "รหัส";
+            languageToolStripMenuItem.Text = "เลือกภาษา";
+            helpToolStripMenuItem.Text = "ช่วยเหลือ";
+            aboutUsToolStripMenuItem.Text = "เกี่ยวกับเรา";
+            howToUseToolStripMenuItem.Text = "วิธีการใช้เบื้องต้น";
         }
 
         private void engToolStripMenuItem_Click(object sender, EventArgs e)
@@ -609,6 +630,10 @@ namespace Barcode_Generator
             button1.Text = "Generate";
             button3.Text = "Print this code";
             label1.Text = "Code";
+            languageToolStripMenuItem.Text = "Language";
+            helpToolStripMenuItem.Text = "Help";
+            aboutUsToolStripMenuItem.Text = "About us";
+            howToUseToolStripMenuItem.Text = "How to use";
         }
 
         private void label5_Click(object sender, EventArgs e)
@@ -622,6 +647,11 @@ namespace Barcode_Generator
         }
 
         private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
 
         }
