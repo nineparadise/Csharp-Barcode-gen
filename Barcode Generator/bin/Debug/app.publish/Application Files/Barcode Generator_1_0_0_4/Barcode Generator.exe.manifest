@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
+  <asmv1:assemblyIdentity name="Barcode Generator.exe" version="1.0.0.4" publicKeyToken="477aea7560d2a751" language="neutral" processorArchitecture="msil" type="win32" />
+  <application />
+  <entryPoint>
+    <assemblyIdentity name="Barcode Generator" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+    <commandLine file="Barcode Generator.exe" parameters="" />
+  </entryPoint>
+  <trustInfo>
+    <security>
+      <applicationRequestMinimum>
+        <PermissionSet Unrestricted="true" ID="Custom" SameSite="site" />
+        <defaultAssemblyRequest permissionSetReference="Custom" />
+      </applicationRequestMinimum>
+      <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
+        <!--
+          UAC Manifest Options
+          If you want to change the Windows User Account Control level replace the 
+          requestedExecutionLevel node with one of the following.
+
+        <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
+        <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
+        <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
+
+         If you want to utilize File and Registry Virtualization for backward 
+         compatibility then delete the requestedExecutionLevel node.
+    -->
+        <requestedExecutionLevel level="asInvoker" uiAccess="false" />
+      </requestedPrivileges>
+    </security>
+  </trustInfo>
+  <dependency>
+    <dependentOS>
+      <osVersionInfo>
+        <os majorVersion="5" minorVersion="1" buildNumber="2600" servicePackMajor="0" />
+      </osVersionInfo>
+    </dependentOS>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Microsoft.Windows.CommonLanguageRuntime" version="4.0.30319.0" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Barcode Generator.exe" size="28672">
+      <assemblyIdentity name="Barcode Generator" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>VUXjvxVKugbw31D675zy4eO28I6ev1a6yx0XO7yPG/Q=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="OnBarcode.Barcode.WinForms.dll" size="401408">
+      <assemblyIdentity name="OnBarcode.Barcode.WinForms" version="6.0.0.0" publicKeyToken="4DA8D7F865F70E30" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>RDEjJnUWZhNSL1I6inBDOYrvIh9tn/UyVNwEEauyta4=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <file name="Barcode Generator.exe.config" size="195">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>vINTlFyWJAEUccIGGeIDueMDp11iWG8wDe+HaKnGv9c=</dsig:DigestValue>
+    </hash>
+  </file>
+<publisherIdentity name="CN=Master-PC\Master" issuerKeyHash="2e612348e7dabb4d084c99e56b63b27d7deb2157" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>yaMiaG3oa3OO+jCs9dn/EiGHeHsEYOohxKcMP8fpUrM=</DigestValue></Reference></SignedInfo><SignatureValue>VgntfaLoLI86cOZ4lkmHr7ImcROyER3kQsMkBsF8uqisLYp+rRZO+Y0w3yvhqKUTHR8thbkRz1pwrIU9PhCUtWK6yG2sMb1qEWXWFFv3AvVq/VrjKxPCpz+1CquducBcrFsv8O9WOVmdggW8K6Btg7DFvs9MaS+OdjGDHGAoPIA=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>nnMty31W9PIg+KkOWCvB/s9ZnZZ7pstyk4O6s00T+G5V/nBcIrl4C30ersyL79nnrIwbOY8tKPlinbBph5uk6+h/Ul3xCIBoP6pE7tnxCFTkY0tCb1sByyfyaRPzTmXHhkdwLTSNijB28sKZ/A8Y2UF5Hn69v1UmNoiZick3l4M=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="b352e9c73f0ca7c421ea60047b78872112ffd9f5ac30fa8e736be86d6822a3c9" Description="" Url=""><as:assemblyIdentity name="Barcode Generator.exe" version="1.0.0.4" publicKeyToken="477aea7560d2a751" language="neutral" processorArchitecture="msil" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=Master-PC\Master</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>cFuLCvVcLa+A5Q8fex5ADIWEnmURvi49598ZsBXD+Eg=</DigestValue></Reference></SignedInfo><SignatureValue>bGFGqX4ZveQDSqmEB8GaAOdXf9TqZEdPZKDVpL2vlW0pJyc4lXv5Bzc78p5QufpUMLB7+FImw+NICPq25n7f8RMPcRUfgnBNV+cWJ0ik47PnItTf8A2/vf4yqJojbyPkbXm7xOsTsw4qB5VVK9VnVBmXZrHrwKsTbvQvfa8zda4=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>nnMty31W9PIg+KkOWCvB/s9ZnZZ7pstyk4O6s00T+G5V/nBcIrl4C30ersyL79nnrIwbOY8tKPlinbBph5uk6+h/Ul3xCIBoP6pE7tnxCFTkY0tCb1sByyfyaRPzTmXHhkdwLTSNijB28sKZ/A8Y2UF5Hn69v1UmNoiZick3l4M=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIB2TCCAUKgAwIBAgIQHvwvjpmCnatN3TQRg9XiQDANBgkqhkiG9w0BAQsFADArMSkwJwYDVQQDHiAATQBhAHMAdABlAHIALQBQAEMAXABNAGEAcwB0AGUAcjAeFw0xMzA3MDEyMTMzMDVaFw0xNDA3MDIwMzMzMDVaMCsxKTAnBgNVBAMeIABNAGEAcwB0AGUAcgAtAFAAQwBcAE0AYQBzAHQAZQByMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCecy3LfVb08iD4qQ5YK8H+z1mdlnumy3KTg7qzTRP4blX+cFwiuXgLfR6uzIvv2eesjBs5jy0o+WKdsGmHm6Tr6H9SXfEIgGg/qkTu2fEIVORjS0JvWwHLJ/JpE/NOZceGR3AtNI2KMHbywpn8DxjZQXkefr2/VSY2iJmJyTeXgwIDAQABMA0GCSqGSIb3DQEBCwUAA4GBAFKFoMHjeEg0jdERaZZEWUBKaJ6FTQsrwoGiZD7NCQ20RCFsPFPmQ0nm90B5L0mi15GMkfJ0HKltZrKHExKT0AcCzzXUNjRKNZ/D4/mpg8THYgu6jZDrlXFjTEgF2wArQNqnIPp6LKqF21C7gRIsIxQj3mVY2oRu403AJm6t1Z2V</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>
